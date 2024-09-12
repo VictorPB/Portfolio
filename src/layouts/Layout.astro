@@ -1,5 +1,5 @@
 ---
-import NavBar from '../components/NavBar.astro';
+import NavBar from '../components/NavBar.astro'
 ---
 
 <!doctype html>
@@ -7,41 +7,30 @@ import NavBar from '../components/NavBar.astro';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Victor Perez Barranco</title>
 	</head>
 	<body>
-    <NavBar />
+		<NavBar />
 		<slot />
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		color-scheme: dark light;
 	}
 	html {
+		background: #0d0d0d;
 		font-family: system-ui, sans-serif;
-		background: #13151a;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 20px;
+		gap: 100px;
 	}
 </style>

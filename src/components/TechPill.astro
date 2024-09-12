@@ -1,0 +1,14 @@
+---
+interface Props {
+	name: string
+	color: string
+	Icon: string
+}
+
+const { name, color, Icon } = Astro.props
+---
+
+<section class={`flex ${color} px-2 py-1 text-white gap-1 rounded-xl`}>
+	<img src={Icon} class="h-6 w-auto" />
+	<p>{name}</p>
+</section>

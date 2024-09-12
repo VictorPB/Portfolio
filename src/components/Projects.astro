@@ -1,0 +1,42 @@
+---
+import ProjectCard from '@components/ProjectCard.astro'
+
+const TECHTAGS = {
+	ASTRO: {
+		name: 'Astro',
+		color: 'bg-[#8C4103]',
+		Icon: '../../public/icons/Astro.png'
+	},
+	TAILWIND: {
+		name: 'Tailwind CSS',
+		color: 'bg-[#003159]',
+		Icon: '../../icons/Tailwind.png'
+	}
+}
+const PROJECTS = [
+	{
+		image: '../../public/portfolio-preview.png',
+		title: 'Portfolio Vipeba',
+		description:
+			'Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.',
+		link: 'https://svgl.vercel.app/',
+		repo: 'https://github.com/VictorPB/Portfolio',
+		technologies: [TECHTAGS.ASTRO, TECHTAGS.TAILWIND]
+	}
+]
+---
+
+<section class="flex flex-col gap-y-16">
+	{
+		PROJECTS.map((project) => (
+			<ProjectCard
+				image={project.image}
+				title={project.title}
+				description={project.description}
+				repo={project.repo}
+				link={project.link}
+				technologies={project.technologies}
+			/>
+		))
+	}
+</section>
