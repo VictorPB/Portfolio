@@ -1,7 +1,14 @@
 ---
-
+import ThemeToggle from '@components/ThemeToggle.astro'
 ---
 
-<header>
-	<img src="@public/favicon.svg" alt="Vipeba icon" class="h-12 w-12" />
+<header class="flex items-center gap-24">
+	<img src="./public/icons/icon.png" alt="Vipeba" class="w-10" />
+	<nav class="flex items-center justify-between gap-4 py-4">
+		<a href="/" class="text-gray-800 dark:text-white"> Experiencia </a>
+		<a href="/" class="text-gray-800 dark:text-white"> Proyectos </a>
+		<a href="/" class="text-gray-800dark:text-white text-gray-800"> Sobre Mi </a>
+		<a href="/" class="text-gray-800 dark:text-white"> Contacto </a>
+	</nav>
+	<ThemeToggle />
 </header>

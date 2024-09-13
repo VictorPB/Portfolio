@@ -17,7 +17,7 @@ const { image, title, description, repo, link, technologies } = Astro.props
 ---
 
 <section
-	class="w-82 flex h-auto flex-col items-center gap-4 rounded-3xl border border-solid px-6 py-6 hover:scale-[1.05] md:w-[600px] md:flex-row-reverse md:items-start lg:w-[800px]"
+	class="w-82 decoration-300 flex h-auto flex-col items-center gap-4 rounded-3xl border border-solid px-6 py-6 ease-in-out hover:scale-[1.05] md:w-[600px] md:flex-row-reverse md:items-start lg:w-[800px]"
 >
 	<img src={image} alt="ProjectTitle" class="w-64 lg:w-80" />
 	<section class="flex h-auto flex-col gap-2">
@@ -34,7 +34,7 @@ const { image, title, description, repo, link, technologies } = Astro.props
 			</ul>
 		</section>
 		<p class="text-pretty text-xl lg:min-h-[280px]">{description}</p>
-		<footer class="mt-2 flex gap-4 md:absolute md:bottom-6">
+		<footer class="mt-2 flex gap-4">
 			{
 				repo && (
 					<ProjectCardButton href={repo}>

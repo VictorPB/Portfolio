@@ -12,7 +12,7 @@ import NavBar from '../components/NavBar.astro'
 		<meta name="generator" content={Astro.generator} />
 		<title>Victor Perez Barranco</title>
 	</head>
-	<body>
+	<body class="bg-slate-100 text-black dark:bg-slate-900 dark:text-white">
 		<NavBar />
 		<slot />
 	</body>
@@ -22,15 +22,23 @@ import NavBar from '../components/NavBar.astro'
 		color-scheme: dark light;
 	}
 	html {
-		background: #0d0d0d;
 		font-family: system-ui, sans-serif;
+		scroll-behavior: smooth;
 	}
 	body {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin: 0 20px;
+		min-height: 100vh;
+		overscroll-behavior: none;
 		gap: 100px;
+		color: rgba(17, 17, 17, 0.9);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			color: rgba(255, 255, 255, 0.9);
+		}
 	}
 </style>
