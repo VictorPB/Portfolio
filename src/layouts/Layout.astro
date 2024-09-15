@@ -1,5 +1,6 @@
 ---
 import NavBar from '../components/NavBar.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <!doctype html>
@@ -10,11 +11,12 @@ import NavBar from '../components/NavBar.astro'
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Victor Perez Barranco</title>
+		<title>Porfolio de Vipeba</title>
 	</head>
-	<body class="bg-slate-100 text-black dark:bg-slate-900 dark:text-white">
+	<body class="bg-slate-100 text-black dark:bg-[#141414] dark:text-white">
 		<NavBar />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -29,11 +31,10 @@ import NavBar from '../components/NavBar.astro'
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
 		min-height: 100vh;
 		overscroll-behavior: none;
-		gap: 100px;
 		color: rgba(17, 17, 17, 0.9);
+		margin: 0 15%;
 	}
 
 	@media (prefers-color-scheme: dark) {

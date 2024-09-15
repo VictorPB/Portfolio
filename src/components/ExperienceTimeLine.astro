@@ -17,8 +17,12 @@ const EXPERIENCE = [
 ]
 ---
 
-<section class="flex flex-col gap-y-16">
-	<h2 class="text-4xl font-bold text-yellow-600 dark:text-white">Experiencia</h2>
+<section class="mt-14 flex w-full flex-col items-center gap-y-16">
+	<h2
+		class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
+	>
+		Experiencia laboral
+	</h2>
 	<ol class="relative border-s border-gray-700 dark:border-gray-200">
 		{EXPERIENCE.map((experience) => <ExperienceTimeLineItem experience={experience} />)}
 	</ol>

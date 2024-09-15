@@ -11,19 +11,19 @@ interface Props {
 const { experience } = Astro.props
 ---
 
-<li class="mb-10 ms-4">
+<li class="mb-10 ms-4 md:flex md:justify-start md:gap-12">
 	<div
 		class="absolute -start-1.5 mt-1.5 h-3 w-3 rounded-full border border-gray-900 bg-gray-700 dark:border-white dark:bg-gray-200"
 	>
 	</div>
-	<h3 class="text-2xl font-semibold text-yellow-600 dark:text-white">
-		{experience.job}
-	</h3>
-	<h4 class="text-lg text-gray-800 dark:text-gray-700">{experience.company}</h4>
-	<time class="mb-1 text-lg font-normal leading-none text-gray-400 dark:text-gray-500"
-		>{experience.time}</time
-	>
-	<p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+	<aside>
+		<h3 class="text-2xl font-semibold">
+			{experience.job}
+		</h3>
+		<h4 class="text-lg text-gray-800 dark:text-gray-300">{experience.company}</h4>
+		<time class="mb-1 text-lg font-normal leading-none text-gray-400">{experience.time}</time>
+	</aside>
+	<p class="text-pretty text-xl font-normal text-gray-800 dark:text-gray-100">
 		{experience.description}
 	</p>
 </li>

@@ -8,7 +8,12 @@ interface Props {
 const { name, color, Icon } = Astro.props
 ---
 
-<section class={`flex ${color} px-2 py-1 text-white gap-1 rounded-xl`}>
-	<img src={Icon} class="h-6 w-auto" />
-	<p>{name}</p>
-</section>
+<span class="relative inline-flex overflow-hidden rounded-full p-[1px]">
+	<span class={`absolute inset-[-1000%] animate-[spin_2s_linear_infinite] ${color}`}></span>
+	<section
+		class="flex w-full items-center justify-center gap-1 whitespace-nowrap rounded-full bg-slate-300 px-2 py-1 text-sm backdrop-blur-3xl dark:bg-slate-800 dark:text-white/80"
+	>
+		<img src={Icon} class="h-6 w-auto" />
+		<p>{name}</p>
+	</section>
+</span>
