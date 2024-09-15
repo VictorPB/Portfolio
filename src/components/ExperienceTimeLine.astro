@@ -1,5 +1,6 @@
 ---
 import ExperienceTimeLineItem from '@components/ExperienceTimeLineItem.astro'
+import Work from '@public/icons/work.astro'
 
 const EXPERIENCE = [
 	{
@@ -17,12 +18,17 @@ const EXPERIENCE = [
 ]
 ---
 
-<section class="mt-14 flex w-full flex-col items-center gap-y-16">
-	<h2
-		class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
-	>
-		Experiencia laboral
-	</h2>
+<section class="mt-14 flex w-full flex-col items-center gap-y-16 md:mt-32">
+	<div class="flex items-center gap-5">
+		<Work class="size-12" />
+		<h2
+			id="experiencia"
+			data-section="experiencia"
+			class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
+		>
+			Experiencia laboral
+		</h2>
+	</div>
 	<ol class="relative border-s border-gray-700 dark:border-gray-200">
 		{EXPERIENCE.map((experience) => <ExperienceTimeLineItem experience={experience} />)}
 	</ol>

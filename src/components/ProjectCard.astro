@@ -1,5 +1,5 @@
 ---
-import ProjectCardButton from '@components/ProjectCardButton.astro'
+import Button from '@components/Button.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
 import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import TechPill from './TechPill.astro'
@@ -36,18 +36,18 @@ const { image, title, description, repo, link, technologies } = Astro.props
 		<footer class="flex gap-4">
 			{
 				repo && (
-					<ProjectCardButton href={repo}>
+					<Button href={repo}>
 						<GithubIcon class="size-4" />
-						Code
-					</ProjectCardButton>
+						Código
+					</Button>
 				)
 			}
 			{
 				link && (
-					<ProjectCardButton href={link}>
+					<Button href={link}>
 						<PreviewIcon class="size-4" />
-						Preview
-					</ProjectCardButton>
+						Enlace
+					</Button>
 				)
 			}
 		</footer>

@@ -1,9 +1,12 @@
 ---
-
+import Button from './Button.astro'
+import LinkedIn from '@public/icons/LinkedIn.astro'
+import GitHub from '@public/icons/Github.astro'
+import CV from '@public/icons/CV.astro'
 ---
 
 <header
-	class="mx-auto flex min-h-[90vh] flex-col items-center justify-center gap-10 px-4 py-8 text-center md:px-6 md:py-16 xl:flex-row"
+	class="flex min-h-[90vh] flex-col items-center justify-center gap-10 px-4 py-8 text-center md:px-6 md:py-16 xl:flex-row"
 >
 	<aside class="flex flex-col justify-evenly gap-5 xl:max-w-[50%]">
 		<h1 class="mb-4 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
@@ -15,9 +18,27 @@
 		<p
 			class="dark:text-grey-400 text-pretty text-lg font-light text-gray-500 dark:text-gray-100 md:text-xl lg:text-2xl"
 		>
-			Desarrollador FullStack y diseñador UI/UX ayudando a startups a convertir sus visiones en una
-			realidad digital. Me especializo en diseñar y construir aplicaciones móviles y web modernas.
+			Desarrollador FullStack centrado en convertir ideas y visiones en una realidad digital. Me
+			especializo en diseñar y construir web modernas y aplicaciones multiplataforma.
 		</p>
+		<nav>
+			<ul class="flex justify-center gap-4 align-middle">
+				<>
+					<Button href="https://www.linkedin.com/in/victorperezbarranco/">
+						<LinkedIn class="size-6" />
+						LinkedIn
+					</Button>
+					<Button href="https://github.com/VictorPB">
+						<GitHub class="size-6" />
+						GitHub
+					</Button>
+					<Button href="https://www.linkedin.com/in/victorperezbarranco/">
+						<CV class="size-6" />
+						CV
+					</Button>
+				</>
+			</ul>
+		</nav>
 	</aside>
 	<div
 		class="h-auto w-full max-w-96 overflow-hidden rounded-xl drop-shadow-2xl xl:relative xl:left-[50px] xl:w-[550px] xl:rotate-6 xl:transform"

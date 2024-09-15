@@ -2,13 +2,19 @@
 import ThemeToggle from '@components/ThemeToggle.astro'
 ---
 
-<header class="flex items-center justify-center gap-1 md:gap-24">
+<header class="flex items-center justify-between gap-1 md:justify-center md:gap-24">
 	<img src="./public/icons/icon.png" alt="Vipeba" class="w-10" />
-	<nav class="flex items-center justify-between gap-4 py-4">
-		<a href="/" class="text-gray-800 dark:text-white"> Experiencia </a>
-		<a href="/" class="text-gray-800 dark:text-white"> Proyectos </a>
-		<a href="/" class="text-gray-800 dark:text-white"> Sobre Mi </a>
-		<a href="/" class="text-gray-800 dark:text-white"> Contacto </a>
+	<nav class="hidden items-center justify-between gap-4 py-4 md:flex">
+		<a href="/#experiencia" aria-label="experiencia" class="text-gray-800 dark:text-white">
+			Experiencia
+		</a>
+		<a href="/#proyectos" aria-label="proyectos" class="text-gray-800 dark:text-white">
+			Proyectos
+		</a>
+		<a href="/#sobre-mi" aria-label="sobre-mi" class="text-gray-800 dark:text-white"> Sobre Mi </a>
+		<a href="mailto:victorperezbarrancodev@gmail.com" class="text-gray-800 dark:text-white">
+			Contacto
+		</a>
 	</nav>
 	<ThemeToggle />
 </header>

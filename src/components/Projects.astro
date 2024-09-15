@@ -1,5 +1,6 @@
 ---
 import ProjectCard from '@components/ProjectCard.astro'
+import ProjectsIcon from '@public/icons/Projects.astro'
 
 const TECHTAGS = {
 	ASTRO: {
@@ -27,12 +28,17 @@ const PROJECTS = [
 ]
 ---
 
-<section class="mt-[100px] flex w-full flex-col items-center gap-y-16">
-	<h2
-		class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
-	>
-		Proyectos destacados
-	</h2>
+<section class="mt-[100px] flex w-full flex-col items-center gap-y-16 md:mt-[150px]">
+	<div class="flex items-center gap-5">
+		<ProjectsIcon class="size-12" />
+		<h2
+			id="proyectos"
+			data-section="proyectos"
+			class="bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
+		>
+			Proyectos destacados
+		</h2>
+	</div>
 	{
 		PROJECTS.map((project) => (
 			<ProjectCard
