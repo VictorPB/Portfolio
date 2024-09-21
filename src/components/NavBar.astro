@@ -1,20 +1,98 @@
 ---
 import ThemeToggle from '@components/ThemeToggle.astro'
+import CopyMailButton from './CopyMailButton.astro'
 ---
 
-<header class="flex items-center justify-between gap-1 md:justify-center md:gap-24">
-	<img src="./public/icons/icon.png" alt="Vipeba" class="w-10" />
-	<nav class="hidden items-center justify-between gap-4 py-4 md:flex">
-		<a href="/#experiencia" aria-label="experiencia" class="text-gray-800 dark:text-white">
-			Experiencia
-		</a>
-		<a href="/#proyectos" aria-label="proyectos" class="text-gray-800 dark:text-white">
-			Proyectos
-		</a>
-		<a href="/#sobre-mi" aria-label="sobre-mi" class="text-gray-800 dark:text-white"> Sobre Mi </a>
-		<a href="mailto:victorperezbarrancodev@gmail.com" class="text-gray-800 dark:text-white">
-			Contacto
-		</a>
-	</nav>
-	<ThemeToggle />
-</header>
+<section class="fixed top-0 z-10 mx-auto mt-2 flex items-center justify-center md:w-full">
+	<header
+		class="flex w-[100vw] items-center justify-between gap-1 rounded-full text-xs font-medium text-gray-600 dark:text-gray-200 md:w-auto md:justify-evenly md:gap-10 md:text-sm"
+	>
+		<a href="#top"><img src="./public/icons/icon.png" alt="Vipeba" class="mx-3 w-10" /></a>
+		<nav class="relative flex items-center gap-2 py-4 md:justify-between md:gap-4">
+			<a
+				href="/#experiencia"
+				aria-label="experiencia"
+				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
+			>
+				Experiencia
+			</a>
+			<a
+				href="/#proyectos"
+				aria-label="proyectos"
+				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
+			>
+				Proyectos
+			</a>
+			<a
+				href="/#sobre-mi"
+				aria-label="sobre-mi"
+				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
+			>
+				Sobre Mí
+			</a>
+			<a
+				transition:persist
+				id="contact"
+				class="flex cursor-pointer border-none text-gray-800 transition hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
+			>
+				Contacto
+			</a>
+			<div
+				transition:persist
+				id="contact-menu"
+				class="scale-80 absolute right-0 top-12 hidden w-fit rounded-md border border-gray-100 bg-white/90 p-1 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md dark:border-gray-500/20 dark:bg-[#2F2F2F]"
+			>
+				<ul class="flex items-center justify-center gap-1">
+					<li
+						class="contact-menu-option cursor-default rounded-sm px-2 py-1.5 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50"
+					>
+						<a href="mailto:victorperezbarrancodev@gmail.com">victorperezbarrancodev@gmail.com</a>
+					</li>
+					<li class="flex justify-between">
+						<CopyMailButton />
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<ThemeToggle />
+	</header>
+</section>
+
+<script is:inline>
+	const contact = document.getElementById('contact')
+	const contactMenu = document.getElementById('contact-menu')
+
+	contact.addEventListener('click', () =>
+		contactMenu.classList.contains('hidden')
+			? contactMenu.classList.remove('hidden')
+			: contactMenu.classList.add('hidden')
+	)
+</script>
+
+<style>
+	header {
+		animation: header-shadown 1s linear both;
+		animation-timeline: scroll();
+		animation-range: 0 100px;
+	}
+
+	header {
+		@apply bg-white/50 dark:bg-[#121212]/90;
+	}
+
+	a {
+	}
+
+	@keyframes header-shadown {
+		0% {
+			@apply bg-white/0 dark:bg-[#121212]/0;
+		}
+		to {
+			@apply shadow-lg ring-1 ring-white/10 backdrop-blur;
+		}
+	}
+
+	#contact-menu.open {
+		display: inline;
+	}
+</style>
