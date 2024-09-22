@@ -31,7 +31,7 @@ const { image, title, description, repo, link, technologies } = Astro.props
 			loading="lazy"
 		/>
 	</div>
-	<section class="flex flex-grow flex-col gap-4 lg:w-[40%]">
+	<section class="flex flex-grow flex-col gap-4 xl:w-[40%]">
 		<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">{title}</h1>
 		<section class="">
 			<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
@@ -44,7 +44,7 @@ const { image, title, description, repo, link, technologies } = Astro.props
 				}
 			</ul>
 		</section>
-		<div class="text-xl lg:grow">
+		<div class="text-xl xl:grow">
 			{description.map((paragraph) => <p>{paragraph}</p>)}
 		</div>
 		<footer class="flex gap-2">
