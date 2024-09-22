@@ -14,16 +14,26 @@ const TECHTAGS = {
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#36B7F0_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#36B7F0_50%,#000000_100%)]',
 		Icon: '../../icons/Tailwind.png'
+	},
+	FIGMA: {
+		name: 'Figma',
+		color:
+			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#F24E1E_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#F24E1E_50%,#000000_100%)]',
+		Icon: '../../icons/Figma.webp'
 	}
 }
 const PROJECTS = [
 	{
-		image: '../../public/portfolio-preview.png',
+		image: '../../public/portfolio-preview.webp',
 		title: 'Portfolio Vipeba',
-		description: 'Porfolio de presentación como profesional.',
-		link: 'https://svgl.vercel.app/',
+		description: [
+			'Porfolio de presentación como desarrolador de software.',
+			'Diseñado en Figma buscando un enfoque moderno y atractivo.',
+			'Desarrollado con Astro y Tailwind CSS aprovechando su capacidad para generar sitios estáticos rápidos y eficientes.'
+		],
+		link: 'https://vipeba.dev',
 		repo: 'https://github.com/VictorPB/Portfolio',
-		technologies: [TECHTAGS.ASTRO, TECHTAGS.TAILWIND]
+		technologies: [TECHTAGS.FIGMA, TECHTAGS.ASTRO, TECHTAGS.TAILWIND]
 	}
 ]
 ---
