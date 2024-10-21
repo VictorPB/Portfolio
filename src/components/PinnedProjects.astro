@@ -1,0 +1,30 @@
+---
+import ProjectCard from '@components/ProjectCard.astro'
+import ProjectsIcon from '@public/icons/Projects.astro'
+
+import { type Project, getProjectsByIds } from '@data/projects'
+import Button from '@components/Button.astro'
+import ViewPost from '@public/icons/ViewPost.astro'
+
+const PinnedProjectsIds = ['Portfolio']
+let PINNED_PROJECTS: Project[] = getProjectsByIds(PinnedProjectsIds)
+---
+
+<section class="mt-[100px] flex w-full flex-col items-center gap-y-16 md:mt-[150px]">
+	<div class="flex items-center gap-5">
+		<ProjectsIcon class="size-12" />
+		<h2
+			id="projects"
+			data-section="projects"
+			class="scroll-m-20 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
+		>
+			Proyectos destacados
+		</h2>
+	</div>
+
+	{PINNED_PROJECTS.map((project) => <ProjectCard {...project} />)}
+	<Button href="/blog" target="_self">
+		<ViewPost class="size-10" />
+		<span class="text-2xl">Explora todos los proyectos y actividades en el Blog</span>
+	</Button>
+</section>

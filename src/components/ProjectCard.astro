@@ -3,64 +3,72 @@ import Button from '@components/Button.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
 import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import TechPill from './TechPill.astro'
+import ViewPost from '@public/icons/ViewPost.astro'
 
-interface Props {
-	image: string
-	title: string
-	description: Array<string>
-	repo?: string
-	link?: string
-	technologies: { name: string; color: string; Icon: any }[]
-}
+import type { Project } from '@data/projects'
 
-const { image, title, description, repo, link, technologies } = Astro.props
+const ProjectData = Astro.props as Project
 ---
 
 <section
 	id="ProjectCard"
-	class="group flex h-fit w-fit flex-col gap-4 rounded-3xl border border-solid border-slate-300 bg-slate-200 px-6 py-6 align-middle dark:border-gray-600 dark:bg-[#181818] xl:flex-row-reverse"
+	class="group flex h-fit w-fit flex-col gap-4 rounded-3xl border border-solid border-slate-300 bg-slate-200 px-6 py-6 align-middle transition duration-500 ease-in-out hover:shadow-xl dark:border-gray-600 dark:bg-[#181818] xl:flex-row-reverse"
 >
-	<div
-		class="transform overflow-clip rounded-xl transition duration-500 ease-in-out group-hover:shadow-2xl xl:w-[60%]"
+	<picture
+		class="transform overflow-clip rounded-xl transition duration-500 ease-in-out xl:w-[60%]"
 	>
 		<img
 			id="ProjectPhoto"
 			class="rounded-xl object-cover object-top transition duration-500 group-hover:scale-105"
-			src={image}
-			alt="ProjectTitle"
+			src={ProjectData.coverImage}
+			alt={ProjectData.proyectId}
 			loading="lazy"
+			transition:name=`project ${ProjectData.proyectId} image`
 		/>
-	</div>
+	</picture>
 	<section class="flex flex-grow flex-col gap-4 xl:w-[40%]">
-		<h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">{title}</h1>
+		<h1
+			class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+			transition:name=`project ${ProjectData.proyectId} title`
+		>
+			{ProjectData.title}
+		</h1>
 		<section class="">
 			<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
 				{
-					technologies.map((technology) => (
+					ProjectData.technologies.map((technology) => (
 						<li>
-							<TechPill name={technology.name} color={technology.color} Icon={technology.Icon} />
+							<TechPill {...technology} />
 						</li>
 					))
 				}
 			</ul>
 		</section>
 		<div class="text-xl xl:grow">
-			{description.map((paragraph) => <p>{paragraph}</p>)}
+			{ProjectData.description.map((paragraph) => <p>{paragraph}</p>)}
 		</div>
 		<footer class="flex gap-2">
 			{
-				repo && (
-					<Button href={repo}>
-						<GithubIcon class="size-4" />
+				ProjectData.repo && (
+					<Button href={ProjectData.repo} target="_blank">
+						<GithubIcon class="size-5" />
 						Código
 					</Button>
 				)
 			}
 			{
-				link && (
-					<Button href={link}>
-						<PreviewIcon class="size-4" />
-						Enlace
+				ProjectData.link && (
+					<Button href={ProjectData.link} target="_blank">
+						<PreviewIcon class="size-5" />
+						Preview
+					</Button>
+				)
+			}
+			{
+				(
+					<Button href={`/blog/${ProjectData.proyectId}`} target="_self">
+						<ViewPost class="size-5" />
+						Post
 					</Button>
 				)
 			}

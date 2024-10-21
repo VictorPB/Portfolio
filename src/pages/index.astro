@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Header from '@components/Header.astro'
-import Projects from '@components/Projects.astro'
+import PinnedProjects from '@components/PinnedProjects.astro'
 import ExperienceTimeLine from '@components/ExperienceTimeLine.astro'
 import About from '@components/About.astro'
 ---
@@ -9,6 +9,6 @@ import About from '@components/About.astro'
 <Layout>
 	<Header />
 	<ExperienceTimeLine />
-	<Projects />
+	<PinnedProjects client:load />
 	<About />
 </Layout>

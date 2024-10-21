@@ -7,36 +7,42 @@ import CopyMailButton from './CopyMailButton.astro'
 	<header
 		class="flex w-[100vw] items-center justify-between gap-1 rounded-full text-xs font-medium text-gray-600 dark:text-gray-200 md:w-auto md:justify-evenly md:gap-10 md:text-sm"
 	>
-		<a href="#top"><img src="/logo.webp" alt="Vipeba" class="mx-3 w-12" /></a>
+		<a href="/#top"><img src="/logo.webp" alt="Vipeba" class="mx-3 w-12" /></a>
 		<nav class="relative flex items-center gap-2 py-4 md:justify-between md:gap-4">
 			<a
-				href="/#experiencia"
-				aria-label="experiencia"
+				href="/#experience"
+				aria-label="experience"
 				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
 			>
 				Experiencia
 			</a>
 			<a
-				href="/#proyectos"
-				aria-label="proyectos"
+				href="/#projects"
+				aria-label="projects"
 				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
 			>
 				Proyectos
 			</a>
 			<a
-				href="/#sobre-mi"
-				aria-label="sobre-mi"
+				href="/#about"
+				aria-label="about"
 				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
 			>
 				Sobre Mí
 			</a>
 			<a
+				href="/blog"
+				class="text-gray-800 hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
+			>
+				Blog
+			</a>
+			<button
 				transition:persist
 				id="contact"
 				class="flex cursor-pointer border-none text-gray-800 transition hover:text-fuchsia-500 dark:text-white hover:dark:text-fuchsia-500"
 			>
 				Contacto
-			</a>
+			</button>
 			<div
 				transition:persist
 				id="contact-menu"

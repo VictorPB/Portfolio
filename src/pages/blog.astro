@@ -1,0 +1,24 @@
+---
+import Layout from '@layouts/Layout.astro'
+
+import ProjectCard from '@components/ProjectCard.astro'
+import ProjectsIcon from '@public/icons/Projects.astro'
+
+import { PROJECTS } from '@data/projects'
+---
+
+<Layout>
+	<section class="mt-[100px] flex w-full flex-col items-center gap-y-16 md:mt-[150px]">
+		<div class="flex items-center gap-5">
+			<ProjectsIcon class="size-12" />
+			<h2
+				id="projects"
+				data-section="projects"
+				class="scroll-m-20 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
+			>
+				Blog de proyectos y actividades
+			</h2>
+		</div>
+		{PROJECTS.map((project) => <ProjectCard {...project} />)}
+	</section>
+</Layout>

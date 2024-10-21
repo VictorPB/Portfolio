@@ -2,36 +2,15 @@
 import ExperienceTimeLineItem from '@components/ExperienceTimeLineItem.astro'
 import Work from '@public/icons/work.astro'
 
-const EXPERIENCE = [
-	{
-		time: 'Junio 2024 - Diciembre 2024',
-		job: 'Desarrollador FullStack',
-		company: 'Constella Intelligence',
-		description: [
-			'Contrato de prácticas como desarrollador FullStack de una aplicación de ciberinvestigación.',
-			'Desarrollo de funcionalidades para una aplicación SPA en VueJS y JS/TS.',
-			'Trabajo en equipo con Metodologías Ágiles.'
-		]
-	},
-	{
-		time: 'Septiembre 2019 - Diciembre 2024',
-		job: 'Estudiante de Ingeniería Informática',
-		company: 'Universidad de Granada',
-		description: [
-			'Estudiante del grado de Ingeniería Informática. Especialidad en Ingeniería del Software.',
-			'Organizandor del torneo de Pádel del día de la escuela con la Delegación de Estudiantes.',
-			'Colaborador en la UGR Lan Party.'
-		]
-	}
-]
+import { EXPERIENCE } from '@data/experience'
 ---
 
 <section class="mt-14 flex w-full flex-col items-center gap-y-16 md:mt-32">
 	<div class="flex items-center gap-5">
 		<Work class="size-12" />
 		<h2
-			id="experiencia"
-			data-section="experiencia"
+			id="experience"
+			data-section="experience"
 			class="scroll-m-20 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl"
 		>
 			Experiencia laboral

@@ -1,0 +1,60 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { getProjectById } from '@data/projects'
+import TechPill from '@components/TechPill.astro'
+import Button from '@components/Button.astro'
+import PreviewIcon from '@public/icons/PreviewIcon.astro'
+import GithubIcon from '@public/icons/CodeIcon.astro'
+
+const { id } = Astro.params
+
+const MyProject = id ? getProjectById(id) : null
+---
+
+<Layout>
+	<article class="mt-20 flex flex-col">
+		<h1
+			class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+			transition:name=`project ${MyProject?.proyectId} title`
+		>
+			{MyProject?.title}
+		</h1>
+		<section class="flex w-full flex-row">
+			<aside>
+				<h3>Tecnologías</h3>
+				<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
+					{
+						MyProject?.technologies.map((technology) => (
+							<li>
+								<TechPill {...technology} />
+							</li>
+						))
+					}
+				</ul>
+				<h3>Enlaces</h3>
+				{
+					MyProject?.repo && (
+						<Button href={MyProject?.repo} target="_blank">
+							<GithubIcon class="size-5" />
+							Código
+						</Button>
+					)
+				}
+				{
+					MyProject?.link && (
+						<Button href={MyProject?.link} target="_blank">
+							<PreviewIcon class="size-5" />
+							Preview
+						</Button>
+					)
+				}
+			</aside>
+			<img
+				class="rounded-xl"
+				src={MyProject?.coverImage}
+				alt={MyProject?.proyectId}
+				transition:name=`project ${MyProject?.proyectId} image`
+			/>
+		</section>
+	</article>
+</Layout>
