@@ -2,6 +2,7 @@
 import NavBar from '../components/NavBar.astro'
 import Footer from '../components/Footer.astro'
 import { ViewTransitions } from 'astro:transitions'
+import Gradient from '@components/Gradient.astro'
 ---
 
 <!doctype html>
@@ -16,9 +17,11 @@ import { ViewTransitions } from 'astro:transitions'
 		<ViewTransitions fallback="none" />
 	</head>
 	<body class="bg-slate-100 text-black dark:bg-[#121212] dark:text-white">
+		<Gradient />
 		<NavBar />
 		<slot />
 		<Footer />
+		<Gradient />
 	</body>
 </html>
 <style is:global>

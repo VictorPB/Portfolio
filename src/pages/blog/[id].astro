@@ -5,6 +5,7 @@ import TechPill from '@components/TechPill.astro'
 import Button from '@components/Button.astro'
 import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
+import DesignIcon from '@public/icons/DesignIcon.astro'
 
 const { id } = Astro.params
 
@@ -12,49 +13,243 @@ const MyProject = id ? getProjectById(id) : null
 ---
 
 <Layout>
-	<article class="mt-20 flex flex-col">
-		<h1
-			class="text-4xl font-bold text-gray-900 dark:text-gray-100"
-			transition:name=`project ${MyProject?.proyectId} title`
-		>
-			{MyProject?.title}
-		</h1>
-		<section class="flex w-full flex-row">
-			<aside>
-				<h3>Tecnologías</h3>
-				<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
-					{
-						MyProject?.technologies.map((technology) => (
-							<li>
-								<TechPill {...technology} />
-							</li>
-						))
-					}
-				</ul>
-				<h3>Enlaces</h3>
-				{
-					MyProject?.repo && (
-						<Button href={MyProject?.repo} target="_blank">
-							<GithubIcon class="size-5" />
-							Código
-						</Button>
-					)
-				}
-				{
-					MyProject?.link && (
-						<Button href={MyProject?.link} target="_blank">
-							<PreviewIcon class="size-5" />
-							Preview
-						</Button>
-					)
-				}
+	<article class="mt-20 flex w-full flex-col items-center gap-12">
+		<header class="flex w-full flex-col place-content-around items-center gap-8 lg:flex-row">
+			<aside class="flex flex-col gap-6">
+				<h4 class="text-gray-500 dark:text-gray-500">{MyProject?.date}</h4>
+				<section>
+					<img
+						class="h-16 w-fit"
+						src={MyProject?.logo}
+						alt={MyProject?.logo}
+						transition:name=`project ${MyProject?.logo} image`
+					/>
+					<h1
+						class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+						transition:name=`project ${MyProject?.proyectId} title`
+					>
+						{MyProject?.title}
+					</h1>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Tecnologías</h3>
+					<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
+						{
+							MyProject?.technologies.map((technology) => (
+								<li>
+									<TechPill {...technology} />
+								</li>
+							))
+						}
+					</ul>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Enlaces</h3>
+					<ul class="flex gap-2">
+						{
+							MyProject?.repo && (
+								<Button href={MyProject?.repo} target="_blank">
+									<GithubIcon class="size-5" />
+									Código
+								</Button>
+							)
+						}
+						{
+							MyProject?.link && (
+								<Button href={MyProject?.link} target="_blank">
+									<PreviewIcon class="size-5" />
+									Preview
+								</Button>
+							)
+						}
+						{
+							MyProject?.diseño && (
+								<Button href={MyProject?.diseño} target="_blank">
+									<DesignIcon class="size-5" />
+									Diseño
+								</Button>
+							)
+						}
+					</ul>
+				</section>
 			</aside>
 			<img
-				class="rounded-xl"
+				class="w-[450px] rounded-xl"
 				src={MyProject?.coverImage}
 				alt={MyProject?.proyectId}
 				transition:name=`project ${MyProject?.proyectId} image`
 			/>
+		</header>
+		<section class="flex flex-col items-center">
+			<section class="flex w-[85%] flex-col gap-6">
+				<section>
+					<h3 class="text-xl font-bold">Propósito</h3>
+					<p>
+						El porfolio es un proyecto muy útil para los desarrolladores. Funciona principalmente
+						como carta de presentación, expositor de proyectos y habilidades técnicas y contacto con
+						el entorno profesional. Es muy interesante complementarlo con un blog u otra forma de
+						contenido, donde profundizar sobre los proyectos y publicar actividades relacionadas con
+						la actividad profesional.
+					</p>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Diseño</h3>
+					<p>
+						Para el diseño se ha buscado un estilo limpio y moderno, inspirado en las tendencias
+						actuales. Se ha utilizado una paleta de colores sencilla que permita una visualización
+						clara del contenido. Se ha implementado un modo claro y oscuro, permitiendo al usuario
+						elegir según sus preferencias de lectura. Además, se ha adoptado un diseño adaptativo
+						que asegura una experiencia de usuario óptima en cualquier tamaño de pantalla.
+					</p>
+				</section>
+				<section
+					class="flex flex-col items-center gap-6 md:grid md:h-[836px] md:w-[836px] md:grid-cols-3 md:grid-rows-3"
+				>
+					<div
+						class="group col-start-1 col-end-2 row-start-1 row-end-3 h-[552px] w-[260px] rounded-2xl bg-[#FEDF6F]"
+					>
+						<div class="flex h-full flex-grow flex-col items-center">
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative top-10 h-fit w-56 rounded-xl transition duration-500 group-hover:-translate-x-4 group-hover:-rotate-12 group-hover:scale-110 group-hover:shadow-2xl"
+									src="/Bento1.webp"
+								/>
+							</picture>
+							<article class="m-4 h-fit">
+								<h5 class="text-xl font-bold text-[#BA5331]">Prototipo Figma</h5>
+								<p class="text-sm leading-[100%] text-[#BA5331]">
+									Prototipos de diseño para visualizar ideas y conceptos. Realizando AB test.
+								</p>
+							</article>
+						</div>
+					</div>
+					<div
+						class="col-start-2 col-end-3 row-start-1 row-end-2 h-[260px] w-[400px] rounded-2xl bg-[#F9A474] md:w-[552px]"
+					>
+						<div class="group flex h-full flex-grow flex-row items-center">
+							<article class="m-4 h-fit w-64">
+								<h5 class="text-xl font-bold text-[#1C2D5D]">Diseño Adaptativo</h5>
+								<p class="text-sm leading-[100%] text-[#1C2D5D]">
+									Visualización en todo tipo y formato de pantallas.
+								</p>
+							</article>
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative left-6 top-14 z-10 h-fit w-20 rounded-xl transition duration-500 group-hover:-translate-x-4 group-hover:-rotate-12 group-hover:scale-125"
+									src="/Bento2.webp"
+								/>
+								<img
+									class="relative bottom-4 right-16 h-fit w-72 rounded-xl transition duration-500 group-hover:scale-125"
+									src="/Bento3.webp"
+								/>
+								<img
+									class="relative right-44 top-6 h-fit w-36 rounded-xl transition duration-500 group-hover:translate-x-4 group-hover:rotate-12 group-hover:scale-125"
+									src="/Bento4.webp"
+								/>
+							</picture>
+						</div>
+					</div>
+					<div
+						class="group col-start-2 col-end-3 row-start-2 row-end-3 h-[260px] w-[260px] rounded-2xl bg-[#F682A5]"
+					>
+						<div class="flex h-full flex-grow flex-col">
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative left-4 top-4 h-fit w-24 rounded-xl transition duration-500 group-hover:-translate-x-4 group-hover:-rotate-12 group-hover:scale-125"
+									src="/Bento9.webp"
+								/>
+								<img
+									class="relative right-10 top-24 h-fit w-36 rounded-xl transition duration-500 group-hover:scale-125"
+									src="/Bento10.webp"
+								/>
+								<img
+									class="relative right-28 top-6 h-fit w-36 rounded-xl transition duration-500 group-hover:translate-x-4 group-hover:rotate-12 group-hover:scale-125"
+									src="/Bento11.webp"
+								/>
+							</picture>
+							<article class="m-4 h-fit">
+								<h5 class="text-xl font-bold text-[#1C2D5D]">Contacto</h5>
+								<p class="text-sm leading-[100%] text-[#1C2D5D]">
+									Redes sociales profesionales para contacto.
+								</p>
+							</article>
+						</div>
+					</div>
+					<div
+						class="group col-start-3 col-end-4 row-start-2 row-end-3 h-[260px] w-[260px] rounded-2xl bg-[#C3B2E7]"
+					>
+						<div class="flex h-full flex-grow flex-col items-center">
+							<article class="m-4 h-fit">
+								<h5 class="text-xl font-bold text-[#2B103D]">Blog</h5>
+								<p class="text-sm leading-[100%] text-[#2B103D]">
+									Publicaciones sobre proyectos y contenido relacionado.
+								</p>
+							</article>
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative h-40 w-auto rounded-xl transition duration-500 group-hover:translate-y-2 group-hover:-rotate-12 group-hover:scale-110 group-hover:shadow-2xl"
+									src="/Bento7.webp"
+								/>
+							</picture>
+						</div>
+					</div>
+					<div
+						class="col-start-1 col-end-3 row-start-3 row-end-4 h-[260px] w-[400px] rounded-2xl bg-[#C8D98E] md:w-[552px]"
+					>
+						<div class="group flex h-full flex-grow flex-row items-center">
+							<article class="m-4 h-fit w-44">
+								<h5 class="text-xl font-bold text-[#305815]">Carta de Proyecto</h5>
+								<p class="text-sm leading-[100%] text-[#305815]">
+									Carta de presentación de proyectos con tecnologías y descripción.
+								</p>
+							</article>
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative h-fit w-[800px] rounded-xl transition duration-500 group-hover:scale-110"
+									src="/Bento8.webp"
+								/>
+							</picture>
+						</div>
+					</div>
+					<div
+						class="group col-start-3 col-end-4 row-start-3 row-end-4 h-[260px] w-[260px] rounded-2xl bg-[#B8CEDC]"
+					>
+						<div class="flex h-full flex-grow flex-col">
+							<picture class="relative flex grow flex-row">
+								<img
+									class="relative left-4 top-4 h-fit w-36 rounded-xl transition duration-500 group-hover:-translate-x-4 group-hover:-rotate-12 group-hover:scale-125 group-hover:shadow-2xl"
+									src="/Bento5.webp"
+								/>
+								<img
+									class="relative right-10 top-16 h-fit w-36 rounded-xl transition duration-500 group-hover:translate-x-4 group-hover:rotate-12 group-hover:scale-125 group-hover:shadow-2xl"
+									src="/Bento6.webp"
+								/>
+							</picture>
+							<article class="m-4 h-fit">
+								<h5 class="text-xl font-bold text-[#1C2D5D]">Modo Oscuro</h5>
+								<p class="text-sm leading-[100%] text-[#1C2D5D]">
+									Disponibilidad de alternar entre modos de visualización para una mejor lectura y
+									confort visual.
+								</p>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Tecnologías</h3>
+					<p>El diseño se ha realizado mediante Figma, una aplicación de diseño y prototipado.</p>
+					<p>
+						Para el desarrollo he optado por el framework web Astro. Ideal para el desarrollo de
+						porfolios, por su requisito técnico de uso básico de HTML, CSS y su buen rendimiento en
+						páginas centradas en el contenido.
+					</p>
+					<p>
+						Para el estilo opté por usar TailwindCSS, un framework de CSS que permite mediante
+						nombres de clases preestablecidas estilar el contenido. Permite una coherencia de
+						estilos al usar sus clases y un desarrollo rápido.
+					</p>
+				</section>
+			</section>
 		</section>
-	</article>
-</Layout>
+	</article></Layout
+>

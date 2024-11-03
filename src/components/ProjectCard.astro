@@ -26,7 +26,13 @@ const ProjectData = Astro.props as Project
 			transition:name=`project ${ProjectData.proyectId} image`
 		/>
 	</picture>
-	<section class="flex flex-grow flex-col gap-4 xl:w-[40%]">
+	<section class="flex flex-grow flex-col gap-2 xl:w-[40%]">
+		<img
+			class="h-16 w-fit"
+			src={ProjectData?.logo}
+			alt={ProjectData?.logo}
+			transition:name=`project ${ProjectData.logo} image`
+		/>
 		<h1
 			class="text-4xl font-bold text-gray-900 dark:text-gray-100"
 			transition:name=`project ${ProjectData.proyectId} title`
@@ -49,10 +55,10 @@ const ProjectData = Astro.props as Project
 		</div>
 		<footer class="flex gap-2">
 			{
-				ProjectData.repo && (
-					<Button href={ProjectData.repo} target="_blank">
-						<GithubIcon class="size-5" />
-						Código
+				(
+					<Button href={`/blog/${ProjectData.proyectId}`} target="_self">
+						<ViewPost class="size-5" />
+						Post
 					</Button>
 				)
 			}
@@ -65,10 +71,10 @@ const ProjectData = Astro.props as Project
 				)
 			}
 			{
-				(
-					<Button href={`/blog/${ProjectData.proyectId}`} target="_self">
-						<ViewPost class="size-5" />
-						Post
+				ProjectData.repo && (
+					<Button href={ProjectData.repo} target="_blank">
+						<GithubIcon class="size-5" />
+						Código
 					</Button>
 				)
 			}
