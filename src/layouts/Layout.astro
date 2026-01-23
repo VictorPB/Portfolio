@@ -16,7 +16,9 @@ import Gradient from '@components/Gradient.astro'
 		<title>Porfolio de Vipeba</title>
 		<ViewTransitions fallback="none" />
 	</head>
-	<body class="bg-slate-100 text-black dark:bg-[#121212] dark:text-white">
+	<body
+		class="flex w-full flex-col items-center justify-center bg-slate-100 px-4 text-black dark:bg-[#121212] dark:text-white lg:px-32"
+	>
 		<Gradient />
 		<NavBar />
 		<slot />
@@ -31,21 +33,5 @@ import Gradient from '@components/Gradient.astro'
 	html {
 		font-family: system-ui, sans-serif;
 		scroll-behavior: smooth;
-	}
-	body {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		overscroll-behavior: none;
-		color: rgba(17, 17, 17, 0.9);
-		margin: 0 15%;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		body {
-			color: rgba(255, 255, 255, 0.9);
-		}
 	}
 </style>
