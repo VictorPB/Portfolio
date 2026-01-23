@@ -6,6 +6,7 @@ import TechPill from '@components/TechPill.astro'
 import ViewPost from '@public/icons/ViewPost.astro'
 
 import type { Project } from '@data/projects'
+import DesignIcon from '@public/icons/DesignIcon.astro'
 
 const ProjectData = Astro.props as Project
 ---
@@ -75,6 +76,14 @@ const ProjectData = Astro.props as Project
 					<Button href={ProjectData.repo} target="_blank">
 						<GithubIcon class="size-5" />
 						Código
+					</Button>
+				)
+			}
+			{
+				ProjectData?.diseño && (
+					<Button href={ProjectData?.diseño} target="_blank">
+						<DesignIcon class="size-5" />
+						Diseño
 					</Button>
 				)
 			}

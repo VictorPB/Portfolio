@@ -32,7 +32,23 @@ export const PROJECTS: Project[] = [
 			'https://www.figma.com/design/DRHniCURB8oFf3D4uo65Ud/Portfolio-Vipeba?node-id=0-1&t=r9HWaeRzQeq1GmRe-1',
 		images: [],
 		date: '22/09/2024'
-	}
+	},
+  {
+		proyectId: 'UI_Tidal_App',
+		title: 'UI Tidal App',
+		logo: '/logo.webp',
+		coverImage: '/uitidal-preview.webp',
+		description: [
+			'Réplica de la interfaz de usuario de la aplicación de música Tidal.',
+			'Descubrimos sus componentes y truquitos de diseño.',
+		],
+		technologies: [TECHNOLOGIES.FIGMA],
+		diseño:
+			'https://www.figma.com/design/jof2I2oQao3DKalvYq0Pnx/Dise%C3%B1os-de-Apps-reales?node-id=8-445&t=t0rmCrD49zVCW0Hz-1',
+		images: [],
+		date: '22/11/2025'
+	},
+  
 ]
 
 export function getProjectById(projectId: string): Project | undefined {
