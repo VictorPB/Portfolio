@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
 		link: 'https://vipeba.dev',
 		repo: 'https://github.com/VictorPB/Portfolio',
 		diseño:
-			'https://www.figma.com/design/eP9KnXSCUVSPVzJb0mcM2W/Portfolio-Vipeba?node-id=19-1772&m=dev',
+			'https://www.figma.com/design/DRHniCURB8oFf3D4uo65Ud/Portfolio-Vipeba?node-id=0-1&t=r9HWaeRzQeq1GmRe-1',
 		images: [],
 		date: '22/09/2024'
 	}
