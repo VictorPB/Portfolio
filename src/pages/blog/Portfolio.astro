@@ -7,23 +7,17 @@ import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
 import DesignIcon from '@public/icons/DesignIcon.astro'
 
-const { id } = Astro.params
+/* const { id } = Astro.params
 
-const MyProject = id ? getProjectById(id) : null
+const MyProject = id ? getProjectById(id) : null */
+const MyProject = getProjectById('Portfolio')
 ---
 
 <Layout>
 	<article class="mt-20 flex w-full flex-col items-center gap-12">
 		<header class="flex w-full flex-col place-content-around items-center gap-8 lg:flex-row">
 			<aside class="flex flex-col gap-6">
-				<h4 class="text-gray-500 dark:text-gray-500">{MyProject?.date}</h4>
 				<section>
-					<img
-						class="h-16 w-fit"
-						src={MyProject?.logo}
-						alt={MyProject?.logo}
-						transition:name=`project ${MyProject?.logo} image`
-					/>
 					<h1
 						class="text-4xl font-bold text-gray-900 dark:text-gray-100"
 						transition:name=`project ${MyProject?.proyectId} title`
@@ -63,8 +57,8 @@ const MyProject = id ? getProjectById(id) : null
 							)
 						}
 						{
-							MyProject?.diseño && (
-								<Button href={MyProject?.diseño} target="_blank">
+							MyProject?.design && (
+								<Button href={MyProject?.design} target="_blank">
 									<DesignIcon class="size-5" />
 									Diseño
 								</Button>
@@ -80,6 +74,7 @@ const MyProject = id ? getProjectById(id) : null
 				transition:name=`project ${MyProject?.proyectId} image`
 			/>
 		</header>
+
 		<section class="flex flex-col items-center">
 			<section class="flex w-[85%] flex-col gap-6">
 				<section>
