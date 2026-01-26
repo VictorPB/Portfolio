@@ -1,12 +1,10 @@
-import { defineCollection, z } from 'astro:content';
+// src/content/config.ts
+import { defineCollection } from 'astro:content';
 
-const projects = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    image: z.string(),
-    hasDetail: z.boolean().default(false), // Para saber si enlazarlo o no
-  }),
+const blog = defineCollection({
+  type: 'content', // Esto indica que procesará Markdown/MDX
 });
 
-export const collections = { projects };
+export const collections = {
+  'blog': blog,
+};

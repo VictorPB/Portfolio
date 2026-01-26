@@ -14,6 +14,22 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
 	{
+		proyectId: 'ULP_Competition',
+		title: 'ULP Sección Competiciones',
+		coverImage: '/ulp-competition-preview.webp',
+		description: [
+      'Encargado del diseño y desarrollo de la sección de competiciones en la web oficial del evento.',
+			'Evento de videojuegos de la Universidad de Granada.',
+			'Miembro del equipo organizador en ediciones de 2024, 2025 y 2026.',
+		],
+		technologies: [ TECHNOLOGIES.THREEJS, TECHNOLOGIES.FIGMA,TECHNOLOGIES.ASTRO, TECHNOLOGIES.TAILWIND],
+    link: 'https://ulp.ugr.es/',
+		repo: 'https://github.com/UGR-Lan-Party/ulp-website',
+		design:
+			'https://www.figma.com/design/m24SecsUaPS0I9DGs4cNw5/ULP-Website?node-id=0-1&t=z8ty0JkSjYHjiuZO-1',
+    hasPost: true,
+	},
+  {
 		proyectId: 'Portfolio',
 		title: 'Portfolio Vipeba',
 		coverImage: '/portfolio-preview.webp',

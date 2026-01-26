@@ -21,7 +21,7 @@ export const TECHNOLOGIES = {
 	THREEJS: {
 		name: 'Three.js',
 		color:
-			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#F24E1E_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#F24E1E_50%,#000000_100%)]',
+			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#000000_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#FFFFFF_50%,#000000_100%)]',
 		Icon: '../../icons/Threejs.webp'
 	}
 }

@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import { getProjectById } from '@data/projects'
-import TechPill from '@components/TechPill.astro'
+import TechBadge from '@components/TechBadge.astro'
 import Button from '@components/Button.astro'
 import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
@@ -31,7 +31,7 @@ const MyProject = getProjectById('Portfolio')
 						{
 							MyProject?.technologies.map((technology) => (
 								<li>
-									<TechPill {...technology} />
+									<TechBadge {...technology} />
 								</li>
 							))
 						}

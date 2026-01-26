@@ -2,7 +2,7 @@
 import Button from '@components/Button.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
 import PreviewIcon from '@public/icons/PreviewIcon.astro'
-import TechPill from '@components/TechPill.astro'
+import TechBadge from '@components/TechBadge.astro'
 import ViewPost from '@public/icons/ViewPost.astro'
 
 import type { Project } from '@data/projects'
@@ -38,7 +38,7 @@ const ProjectData = Astro.props as Project
 				{
 					ProjectData.technologies.map((technology) => (
 						<li>
-							<TechPill {...technology} />
+							<TechBadge {...technology} />
 						</li>
 					))
 				}

@@ -1,0 +1,104 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { getProjectById } from '@data/projects'
+import TechBadge from '@components/TechBadge.astro'
+import Button from '@components/Button.astro'
+import PreviewIcon from '@public/icons/PreviewIcon.astro'
+import GithubIcon from '@public/icons/CodeIcon.astro'
+import DesignIcon from '@public/icons/DesignIcon.astro'
+
+// IMPORTANTE: Importar funciones de colecciones
+import { getCollection, getEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+	const projects = await getCollection('blog')
+	return projects.map((entry: { slug: any }) => ({
+		params: { id: entry.slug } // El slug será el nombre de la carpeta (ej: ULP_Competition)
+	}))
+}
+
+const { id } = Astro.params
+
+// 1. Obtener datos estáticos de tu archivo TS
+const MyProject = id ? getProjectById(id) : null
+
+// 2. Obtener el contenido MDX de la colección
+// El id de la URL debe coincidir con el nombre de la carpeta en src/content/blog/
+const entry = await getEntry('blog', id as string)
+
+if (!MyProject || !MyProject.hasPost || !entry) {
+	return Astro.redirect('/404')
+}
+
+const { Content } = await entry.render()
+---
+
+<Layout>
+	<article>
+		<header class="flex w-full flex-col place-content-around items-center gap-8 lg:flex-row">
+			<aside class="flex flex-col gap-6">
+				<section>
+					<h1
+						class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+						transition:name=`project ${MyProject?.proyectId} title`
+					>
+						{MyProject?.title}
+					</h1>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Tecnologías</h3>
+					<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
+						{
+							MyProject?.technologies.map((technology) => (
+								<li>
+									<TechBadge {...technology} />
+								</li>
+							))
+						}
+					</ul>
+				</section>
+				<section>
+					<h3 class="text-xl font-bold">Enlaces</h3>
+					<ul class="flex gap-2">
+						{
+							MyProject?.repo && (
+								<Button href={MyProject?.repo} target="_blank">
+									<GithubIcon class="size-5" />
+									Código
+								</Button>
+							)
+						}
+						{
+							MyProject?.link && (
+								<Button href={MyProject?.link} target="_blank">
+									<PreviewIcon class="size-5" />
+									Preview
+								</Button>
+							)
+						}
+						{
+							MyProject?.design && (
+								<Button href={MyProject?.design} target="_blank">
+									<DesignIcon class="size-5" />
+									Diseño
+								</Button>
+							)
+						}
+					</ul>
+				</section>
+			</aside>
+			<img
+				class="w-[450px] rounded-xl"
+				src={MyProject?.coverImage}
+				alt={MyProject?.proyectId}
+				transition:name=`project ${MyProject?.proyectId} image`
+			/>
+		</header>
+
+		<hr class="mb-10 border-gray-200 dark:border-gray-800" />
+
+		<div class="prose prose-neutral max-w-none dark:prose-invert">
+			<Content />
+		</div>
+	</article>
+</Layout>
