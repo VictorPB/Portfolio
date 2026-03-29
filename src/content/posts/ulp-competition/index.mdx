@@ -1,0 +1,78 @@
+---
+# Video Resumen
+
+---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+<YouTube id="https://youtu.be/TtRtkTzHVBU" />
+
+# Diseño e implementación
+
+Si vienes de la **ETSIIT** en la Universidad de Granada, seguramente ya sepas de qué hablo. Pero para los que no, la **ULP (UGR Lan Party)** es ese evento anual donde convertimos la facultad en la zona deseada por todo niño amante de los videojuegos.
+
+Es un evento sin ánimo de lucro, montado gracias a la pasión y dedicación de profesores, alumnos y egresados. Consiste en organizar torneos de los juegos del momento, junto con rincones de juego libre que contiene desde consolas retro hasta los juegos recién publicadosm, simuladores de conducción, realidad virtual, futbolín y hackathones. Todo esto es posible gracias al material que compartimos entre todos y al apoyo de entidades de la UGR y empresas colaboradoras.
+
+### Mi viaje en la ULP (Ediciones 2024, 2025, 2026,...)
+
+Llevo tres años colaborando con el grupo y aportando mi granito de arena donde pueda, pasando por distintos equipos y funciones:
+
+- **Streaming y Contenido:** En la edición 2025 nos estrenamos en nuestro Streaming con nuestro primer IRL(in real Life), permitiendo mostrar en directo a nuestros espectadores las distintas zonas, entrevistas y competiciones del evento.
+    
+- **Organización de Torneos:** En 2024 y 2025 participé junto con otro compañero en la realización del torneo de Mario Kart.
+    
+- **Desarrollador Web:** Aquí es donde he probado mi creatividad como desarrollador, trabajando en la **web oficial del proyecto** para tematizarla más con el evento, y no tanto a la seriedad de la web de una institución pública.
+    
+
+
+### Lo que viene a continuación...
+
+En las próximas secciones de este post, abordamos el **proceso de diseño e implementación** de la sección de Competiciones de la web oficial, de las cuales me encargué personalmente de su desarrollo.
+
+---
+## 🛠️ Rediseño del Módulo de Competiciones (Edición 2025)
+
+Para la edición 2025 de la ULP, me encargué de mejorar el apartado de competiciones. Buscabamos crear una estética más relacionada con los videojuegos.
+
+### Punto de partida
+
+La implementación anterior basaba el acceso a los torneos en un menú desplegable dentro de la barra de navegación. Los cuales nos llevan a la página específica de cada competición.
+
+Dentro de la página de cada competición encontramos las siguientes secciones:
+ - Título del juego.
+ - Inscripción.
+ - Reglas.
+ - Premios.
+ - Ubicación.
+
+
+
+### Ideas e inspiración
+Como nueva estructura, me pareció mejor idea tener en la barra de navegación, un apartado de competiciones que directamente nos lleve a una página con el listado de competiciones.
+Así que investigo ideas para la forma de presentar cada competición en ese listado.
+
+Nos ubicamos temporalmente en enero de 2025 y el juego que lo está petando en el momento es **Pokemon TCG Pocket**, lanzado en diciembre de 2024.
+https://tcgpocket.pokemon.com/es-es/
+Consiste en la versión para smartphone del tradicional juego de cartas coleccionables de Pokemon. Su elemento principal son obviamente las cartas, las cuales están muy curradas visualmente
+y tiene unas animaciones y efectos espectaculares.
+
+Inspirado por este juego, busqué la forma de representar cada actividad en una especie de carta pokemon. Con su logo, imagen de fondo y personaje.
+
+Topé con este video de midudev, el cual me materializó totalmente la idea de mi cabeza y puse las manos a trabajar.
+
+<YouTube id="https://www.youtube.com/shorts/D1p2Sl6lxX4" />
+
+### Carta de Competición en listado
+
+El componente resultante es una tarjeta interactiva con dos estados:
+
+1. **Estado Reposo:** Presenta la carta de frente con el logo en la parte inferior.
+    
+2. **Estado Activo (Hover/Focus):** La carte se inclina hacia atrás y aparece desde abajo un personaje.
+       
+Para obtener un toque más especial en el estado activo, añadí 2 efectos más:
+
+ - **Borde de colores con movimiento**: en Pokemon TCG algunas de las cartas especiales tiene un borde estático colorido. Para darle un toque diferente, le añadí movimiento circular.
+ - **Capa brillante a carta**: de nuevo en Pokemon TCG, tanto en cartas físicas como las virtuales, encontramos cartas especiales que tienen un efecto brillante.
+
+
+#### Implementación

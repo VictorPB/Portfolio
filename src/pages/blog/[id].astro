@@ -1,4 +1,7 @@
 ---
+// 1. Forzamos el renderizado estático para que funcione getStaticPaths
+export const prerender = true
+
 import Layout from '@layouts/Layout.astro'
 import { getProjectById } from '@data/projects'
 import TechBadge from '@components/TechBadge.astro'
@@ -7,35 +10,41 @@ import PreviewIcon from '@public/icons/PreviewIcon.astro'
 import GithubIcon from '@public/icons/CodeIcon.astro'
 import DesignIcon from '@public/icons/DesignIcon.astro'
 
-// IMPORTANTE: Importar funciones de colecciones
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 
+// 2. Definimos las rutas basadas en los archivos reales
 export async function getStaticPaths() {
-	const projects = await getCollection('blog')
-	return projects.map((entry: { slug: any }) => ({
-		params: { id: entry.slug } // El slug será el nombre de la carpeta (ej: ULP_Competition)
+	const posts = await getCollection('posts')
+
+	return posts.map((post) => ({
+		params: { id: post.slug }, // El nombre de la carpeta/archivo MDX
+		props: { post } // Pasamos el objeto post completo
 	}))
 }
 
+// 3. Obtenemos los datos de las props y de tu archivo TS
 const { id } = Astro.params
+const { post } = Astro.props
 
-// 1. Obtener datos estáticos de tu archivo TS
-const MyProject = id ? getProjectById(id) : null
-
-// 2. Obtener el contenido MDX de la colección
-// El id de la URL debe coincidir con el nombre de la carpeta en src/content/blog/
-const entry = await getEntry('blog', id as string)
-
-if (!MyProject || !MyProject.hasPost || !entry) {
+// 4. Si el post no existe (por si alguien entra a una URL manual), redirigimos
+if (!post) {
 	return Astro.redirect('/404')
 }
 
-const { Content } = await entry.render()
+// 5. Renderizamos el contenido MDX y buscamos los metadatos en tu data/projects.ts
+const { Content } = await post.render()
+const MyProject = id ? getProjectById(id) : null
+if (!MyProject) {
+	return Astro.redirect('/404')
+}
 ---
 
-<Layout>
-	<article>
-		<header class="flex w-full flex-col place-content-around items-center gap-8 lg:flex-row">
+<Layout
+	title={`${MyProject.title} | Blog Vipeba`}
+	description={`Detalle del proyecto ${MyProject.title}, tecnologías usadas y enlaces.`}
+>
+	<article class="mt-20 flex w-[80%] flex-col items-center gap-12">
+		<header class="flex w-full flex-col place-content-around items-center gap-8 xl:flex-row">
 			<aside class="flex flex-col gap-6">
 				<section>
 					<h1
@@ -49,7 +58,7 @@ const { Content } = await entry.render()
 					<h3 class="text-xl font-bold">Tecnologías</h3>
 					<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
 						{
-							MyProject?.technologies.map((technology) => (
+							MyProject.technologies.map((technology) => (
 								<li>
 									<TechBadge {...technology} />
 								</li>
@@ -61,24 +70,24 @@ const { Content } = await entry.render()
 					<h3 class="text-xl font-bold">Enlaces</h3>
 					<ul class="flex gap-2">
 						{
-							MyProject?.repo && (
-								<Button href={MyProject?.repo} target="_blank">
+							MyProject.repo && (
+								<Button href={MyProject.repo} target="_blank">
 									<GithubIcon class="size-5" />
 									Código
 								</Button>
 							)
 						}
 						{
-							MyProject?.link && (
-								<Button href={MyProject?.link} target="_blank">
+							MyProject.link && (
+								<Button href={MyProject.link} target="_blank">
 									<PreviewIcon class="size-5" />
 									Preview
 								</Button>
 							)
 						}
 						{
-							MyProject?.design && (
-								<Button href={MyProject?.design} target="_blank">
+							MyProject.design && (
+								<Button href={MyProject.design} target="_blank">
 									<DesignIcon class="size-5" />
 									Diseño
 								</Button>
@@ -88,10 +97,10 @@ const { Content } = await entry.render()
 				</section>
 			</aside>
 			<img
-				class="w-[450px] rounded-xl"
-				src={MyProject?.coverImage}
-				alt={MyProject?.proyectId}
-				transition:name=`project ${MyProject?.proyectId} image`
+				class="w-full xl:w-[450px] rounded-xl"
+				src={MyProject.coverImage}
+				alt={`Vista previa de ${MyProject.title}`}
+				transition:name=`project ${MyProject.proyectId} image`
 			/>
 		</header>
 

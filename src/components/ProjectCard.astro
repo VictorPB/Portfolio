@@ -13,7 +13,7 @@ const ProjectData = Astro.props as Project
 
 <section
 	id="ProjectCard"
-	class="group flex h-fit w-fit flex-col gap-4 rounded-3xl border border-solid border-slate-300 bg-slate-200 px-6 py-6 align-middle transition duration-500 ease-in-out hover:shadow-xl dark:border-gray-600 dark:bg-[#181818] xl:flex-row-reverse"
+	class="group flex h-fit w-full flex-col gap-4 rounded-3xl border border-solid border-slate-300 bg-slate-200 px-6 py-6 align-middle transition duration-500 ease-in-out hover:shadow-xl dark:border-gray-600 dark:bg-[#181818] md:max-w-[80%] xl:flex-row-reverse"
 >
 	<picture
 		class="transform overflow-clip rounded-xl transition duration-500 ease-in-out xl:w-[60%]"
@@ -28,13 +28,13 @@ const ProjectData = Astro.props as Project
 	</picture>
 	<section class="flex flex-grow flex-col gap-2 xl:w-[40%]">
 		<h1
-			class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+			class="text-xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl"
 			transition:name=`project ${ProjectData.proyectId} title`
 		>
 			{ProjectData.title}
 		</h1>
 		<section class="">
-			<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
+			<ul class="mb-2 flex w-full flex-wrap gap-x-2 gap-y-1">
 				{
 					ProjectData.technologies.map((technology) => (
 						<li>
@@ -44,10 +44,10 @@ const ProjectData = Astro.props as Project
 				}
 			</ul>
 		</section>
-		<div class="text-xl xl:grow">
+		<div class="text-base font-normal md:text-lg lg:text-xl xl:grow">
 			{ProjectData.description.map((paragraph) => <p>{paragraph}</p>)}
 		</div>
-		<footer class="flex gap-2">
+		<footer class="flex w-full flex-wrap gap-2">
 			{
 				ProjectData.hasPost && (
 					<Button href={`/blog/${ProjectData.proyectId}`} target="_self">
@@ -60,7 +60,7 @@ const ProjectData = Astro.props as Project
 				ProjectData.link && (
 					<Button href={ProjectData.link} target="_blank">
 						<PreviewIcon class="size-5" />
-						Preview
+						Visitar
 					</Button>
 				)
 			}
