@@ -37,12 +37,31 @@ const MyProject = id ? getProjectById(id) : null
 if (!MyProject) {
 	return Astro.redirect('/404')
 }
+
+const pageDescription = MyProject.description.join(' ')
+
+const blogPostingSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: MyProject.title,
+	description: pageDescription,
+	image: new URL(MyProject.coverImage, Astro.site).toString(),
+	url: Astro.url.toString(),
+	author: {
+		'@type': 'Person',
+		name: 'Víctor Pérez Barranco',
+		url: 'https://vipeba.dev',
+	},
+}
 ---
 
 <Layout
 	title={`${MyProject.title} | Blog Vipeba`}
-	description={`Detalle del proyecto ${MyProject.title}, tecnologías usadas y enlaces.`}
+	description={pageDescription}
+	image={MyProject.coverImage}
+	type="article"
 >
+	<script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} slot="head" />
 	<article class="mt-20 flex w-[80%] flex-col items-center gap-12">
 		<header class="flex w-full flex-col place-content-around items-center gap-8 xl:flex-row">
 			<aside class="flex flex-col gap-6">

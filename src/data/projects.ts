@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
 		repo: 'https://github.com/VictorPB/Portfolio',
 		design:
 			'https://www.figma.com/design/DRHniCURB8oFf3D4uo65Ud/Portfolio-Vipeba?node-id=0-1&t=r9HWaeRzQeq1GmRe-1',
-		hasPost: false
+		hasPost: true
 	},
 	{
 		proyectId: 'ui-tidal-app',

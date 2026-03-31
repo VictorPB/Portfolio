@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import Layout from '@layouts/Layout.astro'
 import Header from '@components/Header.astro'
 import PinnedProjects from '@components/PinnedProjects.astro'
@@ -9,6 +11,7 @@ import About from '@components/About.astro'
 <Layout
 	title="Vipeba | Desarrollador Full Stack"
 	description="Portfolio de Víctor Pérez Barranco con experiencia, proyectos destacados y blog técnico."
+	image="/portfolio-preview.webp"
 >
 	<Header />
 	<ExperienceTimeLine />

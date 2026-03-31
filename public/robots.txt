@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vipeba.dev/sitemap-index.xml
