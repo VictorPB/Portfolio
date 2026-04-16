@@ -2,6 +2,14 @@
 import Layout from '@layouts/Layout.astro'
 ---
 
-<Layout>
-	<h1>404: Page not found</h1>
+<Layout
+	title="404 – Página no encontrada | Vipeba"
+	description="La página que buscas no existe o ha sido movida."
+	noindex={true}
+>
+	<section class="mt-32 flex min-h-[40vh] w-full flex-col items-center justify-center gap-4 text-center">
+		<h1 class="text-4xl font-bold">404: página no encontrada</h1>
+		<p class="text-lg text-gray-700 dark:text-gray-300">La ruta no existe o fue movida.</p>
+		<a href="/" class="text-fuchsia-600 underline dark:text-fuchsia-400">Volver al inicio</a>
+	</section>
 </Layout>
