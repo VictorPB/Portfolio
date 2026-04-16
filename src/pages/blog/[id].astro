@@ -50,8 +50,8 @@ const blogPostingSchema = {
 	author: {
 		'@type': 'Person',
 		name: 'Víctor Pérez Barranco',
-		url: 'https://vipeba.dev',
-	},
+		url: 'https://vipeba.dev'
+	}
 }
 ---
 
@@ -61,8 +61,13 @@ const blogPostingSchema = {
 	image={MyProject.coverImage}
 	type="article"
 >
-	<script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} slot="head" />
-	<article class="mt-20 flex w-[80%] flex-col items-center gap-12">
+	<script
+		is:inline
+		type="application/ld+json"
+		set:html={JSON.stringify(blogPostingSchema)}
+		slot="head"
+	/>
+	<article class="mt-20 flex w-full flex-col items-center justify-center md:w-[50vw]">
 		<header class="flex w-full flex-col place-content-around items-center gap-8 xl:flex-row">
 			<aside class="flex flex-col gap-6">
 				<section>
@@ -74,7 +79,7 @@ const blogPostingSchema = {
 					</h1>
 				</section>
 				<section>
-					<h3 class="text-xl font-bold">Tecnologías</h3>
+					<h3 class="mb-1 text-xl font-bold">Tecnologías</h3>
 					<ul class="mb-2 flex flex-row flex-wrap gap-x-2 gap-y-1">
 						{
 							MyProject.technologies.map((technology) => (
@@ -86,7 +91,7 @@ const blogPostingSchema = {
 					</ul>
 				</section>
 				<section>
-					<h3 class="text-xl font-bold">Enlaces</h3>
+					<h3 class="mb-1 text-xl font-bold">Enlaces</h3>
 					<ul class="flex gap-2">
 						{
 							MyProject.repo && (
@@ -116,16 +121,16 @@ const blogPostingSchema = {
 				</section>
 			</aside>
 			<img
-				class="w-full xl:w-[450px] rounded-xl"
+				class="w-full rounded-xl xl:w-[450px]"
 				src={MyProject.coverImage}
 				alt={`Vista previa de ${MyProject.title}`}
 				transition:name=`project ${MyProject.proyectId} image`
 			/>
 		</header>
 
-		<hr class="mb-10 border-gray-200 dark:border-gray-800" />
+		<hr class="mb-10 w-full border-gray-200 dark:border-gray-800" />
 
-		<div class="prose prose-neutral max-w-none dark:prose-invert">
+		<div class="prose prose-neutral w-full max-w-none dark:prose-invert">
 			<Content />
 		</div>
 	</article>
