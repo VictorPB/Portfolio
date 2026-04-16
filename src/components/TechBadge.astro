@@ -2,18 +2,27 @@
 interface Props {
 	name: string
 	color: string
-	Icon: string
+	icon: string
 }
 
-const { name, color, Icon } = Astro.props
+const { name, color, icon } = Astro.props
+
+// Importa todos los .astro de la carpeta de iconos de una vez
+const iconModules = import.meta.glob<{ default: astroHTML.JSX.Element }>('/public/icons/*.astro', {
+	eager: true
+})
+
+const IconComponent = iconModules[`/public/icons/${icon}.astro`]?.default
+
+const border = `bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,${color}_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,${color}_50%,#000000_100%)]`
 ---
 
 <span class="relative flex overflow-hidden rounded-full p-[1px]">
-	<span class={`absolute inset-[-1000%] animate-[spin_2s_linear_infinite] ${color}`}></span>
+	<span class={`absolute inset-[-1000%] animate-[spin_2s_linear_infinite] ${border}`}></span>
 	<section
-		class="flex w-full items-center justify-center gap-1 rounded-full bg-slate-300 px-2 py-1 text-xs backdrop-blur-3xl dark:bg-[#303030] dark:text-white/80"
+		class="flex w-full items-center justify-center gap-1 rounded-full bg-slate-300 px-2 py-1.5 text-xs backdrop-blur-3xl dark:bg-[#535353] dark:text-white/80"
 	>
-		<img src={Icon} class="h-6 w-auto" />
+		{IconComponent && <IconComponent class="size-5" />}
 		<p>{name}</p>
 	</section>
 </span>

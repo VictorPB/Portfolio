@@ -31,20 +31,31 @@ import MoonIcon from '@public/icons/Moon.astro'
 		if (iconDark) iconDark.style.scale = dark ? '0' : '1'
 	}
 
-	applyTheme(isDark())
-
-	matchMedia.addEventListener('change', () => {
-		if (!localStorage.getItem('theme')) applyTheme(matchMedia.matches)
-	})
-
-	document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+	const toggleTheme = () => {
 		const dark = !document.documentElement.classList.contains('dark')
 		localStorage.setItem('theme', dark ? 'dark' : 'light')
 		applyTheme(dark)
-	})
+	}
 
-	document.addEventListener('astro:after-swap', () => {
-		applyTheme(isDark())
-		window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
-	})
+	const setupBtn = () => {
+		const btn = document.getElementById('theme-toggle-btn')
+		if (btn) btn.onclick = toggleTheme
+	}
+
+	applyTheme(isDark())
+	setupBtn()
+
+	if (!window.__themeListenersAttached) {
+		window.__themeListenersAttached = true
+
+		matchMedia.addEventListener('change', () => {
+			if (!localStorage.getItem('theme')) applyTheme(matchMedia.matches)
+		})
+
+		document.addEventListener('astro:after-swap', () => {
+			applyTheme(isDark())
+			setupBtn()
+			window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
+		})
+	}
 </script>

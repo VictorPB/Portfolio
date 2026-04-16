@@ -5,7 +5,7 @@ export interface Project {
 	title: string
 	coverImage: string
 	description: Array<string>
-	technologies: { name: string; color: string; Icon: any }[]
+	technologies: { name: string; color: string; icon: any }[]
 	repo?: string
 	link?: string
 	design?: string
@@ -26,7 +26,8 @@ export const PROJECTS: Project[] = [
 			TECHNOLOGIES.FIGMA,
 			TECHNOLOGIES.ASTRO,
 			TECHNOLOGIES.TAILWIND,
-			TECHNOLOGIES.THREEJS
+			TECHNOLOGIES.THREEJS,
+			TECHNOLOGIES.GSAP
 		],
 		link: 'https://ulp.ugr.es/',
 		repo: 'https://github.com/UGR-Lan-Party/ulp-website',
@@ -48,7 +49,7 @@ export const PROJECTS: Project[] = [
 		repo: 'https://github.com/VictorPB/Portfolio',
 		design:
 			'https://www.figma.com/design/DRHniCURB8oFf3D4uo65Ud/Portfolio-Vipeba?node-id=0-1&t=r9HWaeRzQeq1GmRe-1',
-		hasPost: true
+		hasPost: false
 	},
 	{
 		proyectId: 'ui-tidal-app',

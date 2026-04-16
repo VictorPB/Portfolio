@@ -3,25 +3,30 @@ export const TECHNOLOGIES = {
 		name: 'Astro',
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#FF5D01_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#FF5D01_50%,#000000_100%)]',
-		Icon: '../../icons/Astro.webp'
+		icon: 'astro'
 	},
 	TAILWIND: {
 		name: 'Tailwind CSS',
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#36B7F0_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#36B7F0_50%,#000000_100%)]',
-		Icon: '../../icons/Tailwind.webp'
+		icon: 'tailwind'
 	},
 	FIGMA: {
 		name: 'Figma',
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#F24E1E_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#F24E1E_50%,#000000_100%)]',
-		Icon: '../../icons/Figma.webp'
-	}
-  ,
+		icon: 'figma'
+	},
 	THREEJS: {
 		name: 'Three.js',
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#000000_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#FFFFFF_50%,#000000_100%)]',
-		Icon: '../../icons/Threejs.webp'
+		icon: 'threejs'
+	},
+	GSAP: {
+		name: 'GSAP',
+		color:
+			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#88CE02_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#88CE02_50%,#000000_100%)]',
+		icon: 'gsap'
 	}
 }
