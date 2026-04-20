@@ -3,7 +3,7 @@ export const TECHNOLOGIES = {
 		name: 'Astro',
 		color:
 			'bg-[conic-gradient(from_90deg_at_50%_50%,#FFFFFF_0%,#FF5D01_50%,#FFFFFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#FF5D01_50%,#000000_100%)]',
-		icon: 'astro'
+		icon: 'AstroLogo'
 	},
 	TAILWIND: {
 		name: 'Tailwind CSS',
