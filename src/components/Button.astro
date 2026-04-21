@@ -1,14 +1,40 @@
 ---
-const { href, target } = Astro.props
+interface Props {
+	href?: string
+	target?: string
+	variant?: 'primary' | 'secondary' | 'tertiary'
+}
+
+const { href, target, variant = 'secondary' } = Astro.props
 const rel = target === '_blank' ? 'noopener noreferrer' : undefined
+
+const base =
+	'inline-flex max-h-fit max-w-fit items-center justify-center gap-2 rounded-xl border px-2.5 py-1.5 text-sm md:text-base'
+
+const styles = {
+	primary:
+		'border-gray-700 bg-gray-900 text-white transition hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 active:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-yellow-500/80 focus-visible:ring-offset-2 dark:border-gray-300 dark:bg-gray-100 dark:text-gray-800 dark:hover:border-gray-900 dark:hover:bg-gray-800 dark:hover:text-white',
+	secondary:
+		'border-gray-300 bg-gray-100 text-gray-800 transition hover:border-gray-900 hover:bg-gray-800 hover:text-white active:bg-black focus:outline-none focus-visible:ring focus-visible:ring-yellow-500/80 focus-visible:ring-offset-2 dark:border-gray-600 dark:bg-[#303030] dark:text-white dark:hover:border-gray-300 dark:hover:bg-gray-100 dark:hover:text-black',
+	tertiary:
+		'cursor-not-allowed border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-[#1e1e1e] dark:text-gray-600'
+}
 ---
 
-<a
-	target={target}
-	href={href}
-	rel={rel}
-	role="link"
-	class="group inline-flex max-h-fit max-w-fit items-center justify-center gap-2 rounded-xl border border-gray-300 bg-gray-100 px-2.5 py-1.5 text-sm text-gray-800 transition hover:border-gray-900 hover:bg-gray-800 hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-yellow-500/80 focus-visible:ring-offset-2 active:bg-black dark:border-gray-600 dark:bg-[#303030] dark:text-white dark:hover:border-gray-300 dark:hover:bg-gray-100 dark:hover:text-black md:text-base"
->
-	<slot />
-</a>
+{
+	variant === 'tertiary' ? (
+		<span class={`${base} ${styles.tertiary}`} aria-disabled="true">
+			<slot />
+		</span>
+	) : (
+		<a
+			href={href}
+			target={target}
+			rel={rel}
+			role="link"
+			class={`${base} ${styles[variant]}`}
+		>
+			<slot />
+		</a>
+	)
+}
